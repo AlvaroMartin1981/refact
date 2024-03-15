@@ -1,10 +1,12 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import lodearriba from './top'
+import cocretainc from './assets/cocretainc.jpg'
+/*import lodearriba from './top'*/
 import './App.css'
 
 function App() {
+  let [numberOne, setNumberOne] = useState()
+  let [numberTwo, setNumberTwo] = useState()
+  let [result, setResult] = useState(0)
   // const [count, setCount] = useState(0)
   // const [agrupar, sumarMas] = useState(1)
   // const [contabilizar, quitar] = useState(0)
@@ -42,7 +44,22 @@ function App() {
       { name: 'Cristina', lastName: 'Herrero', hobbies: ['bailar', 'pintura'], age: 26 }
     ];
   
-    var patata1 = 1 
+    function suma (a, b) {      
+      setResult(parseInt(numberOne) + parseInt(numberTwo))      
+    }
+    
+    function resta (a, b) {
+      setResult(parseInt(numberOne) - parseInt(numberTwo)) 
+    }
+    
+    function  multiplicacion(a, b){
+      setResult(parseInt(numberOne) * parseInt(numberTwo)) 
+    }    
+
+    function division (a, b) {
+      setResult(parseInt(numberOne) / parseInt(numberTwo)) 
+    }
+
     var almacenamiento = [];
     for (var i = 0; i < movidas.length; i++) {
       almacenamiento.push(
@@ -55,42 +72,44 @@ function App() {
       );
     }
 
-    var patata2 = 2
-    var resultadopatata = patata1+patata2 
-   
-  return (
-    // tengo que poner aquí el logo en lo de arriba. Que no se me olvide
+  return (  
     <div className="envoltura">
+      <img src={cocretainc} className="logo" alt="Logo" />
       {almacenamiento}
-      {/* <Form> */}
-      {/* {suma} --> clacula la suma de los dos elementos que hay en los inputs */}
-      {resultadopatata}
-      {cocreta} 
-      {/* ejemplo para cambiar luego patata por el resultado que tengo que guardar en las variables para que haga la suma. Puedo usar las mismas variables para el resto */}
-      {/* <button>Aquí tiene que enviar algo para que funcione</button>
-      </Form> */}
-      {/* <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
+      <h2>Resultado:{result}</h2>
+      <form onSubmit={(e) => {
+            e.preventDefault();
+        }}>
+        <input 
+          type='number'
+          value={numberOne}
+          onChange={(e) => setNumberOne(e.target.value)}
+          placeholder='add a number'
+        />
+        <input 
+          type='number'
+          value={numberTwo}
+          onChange={(e) => setNumberTwo(e.target.value)}
+          placeholder='add a number'
+        />
+
+        
+        <button type="button" onClick={suma}>Sumar</button>
+        <button type="button" onClick={resta}>Restar</button>
+        <button type="button" onClick={multiplicacion}>Multiplicar</button>
+        <button type="button" onClick={division}>Dividir</button>
+        </form>
+            
+        <div className='footer'>
+          <ul>
+            <li>Todos los derechos reservados.</li>
+            <li>Coquetas INC ©</li>
+            <li>Dirección: Simancas (Madriz)</li>
+            <li>Teléfono: 917335673 - 635444912</li>
+            <li>Email: croquetasINC@hotmail.com</li>
+          </ul>
+        </div>
     </div>
-    /* <pie /> */
   )
 }
 

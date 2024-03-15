@@ -10,7 +10,9 @@
 }
 
 .envoltura > div {
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  gap:15px;
 }
 
 .logo {
@@ -47,4 +49,12 @@
 
 .read-the-docs {
   color: #888;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ul {
+  list-style: none;
 }
